@@ -127,6 +127,9 @@ input{
     outline-color: gray;
     outline-width: 1px; */
 }
+.auto li:hover{
+    background-color: rgb(197, 204, 202);
+}
 /* Custom scrollbar thumb styles */
 /* ::-webkit-scrollbar-thumb {
     border: 2px solid transparent;

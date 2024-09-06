@@ -1,3 +1,5 @@
+// import "./suggestion.js"
+//import { citiesList, l_f_c, loadData } from "./suggestion";
 const apiKey="4f9aa978f035de553b64413fe3fe4a75";
 //var url="https://api.openweathermap.org/data/2.5/weather?q=ghaziabad&appid=4f9aa978f035de553b64413fe3fe4a75&units=metric";
 let btn=document.querySelector(".button-ele");
@@ -5,14 +7,15 @@ const WIcon=document.querySelector(".weather-icon");
 let city=document.querySelector(".input-city");
 const card=document.querySelector(".weather");
 const details=document.querySelector(".details");
-
-async function checkweather(City) {
-    url=`https://api.openweathermap.org/data/2.5/weather?q=${City}&appid=${apiKey}&units=metric`
-    const response = await fetch(url);
+const url="https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+var City="ghaziabad"
+ async function checkweather(City) {
+    
+    const response = await fetch(url+City+`&appid=${apiKey}`);
     const data= await response.json();
     card.classList.remove("remove");
     //card.style.animationDuration="2s";
-    if(data.message==="city not found"){
+    if(data.message==="city not found"||city.value==""){
         details.classList.add("remove");
         document.querySelector(".city").innerHTML="Please Enter Correct City";
         document.querySelector(".temp").innerHTML=" ";
@@ -31,14 +34,16 @@ async function checkweather(City) {
  }
 }
 
-
- btn.addEventListener("click",run=()=>{
+ btn.addEventListener("click",()=>{
     var City=city.value;
     checkweather(City);
 })
 city.addEventListener("keypress",(event)=>{
     if(event.key==="Enter"){
-        run();
-    }
+    var City=city.value;
+    checkweather(City);
+
+ }
 })
 
+//c=loadData(l_f_c,citiesList)

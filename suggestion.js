@@ -1,3 +1,4 @@
+
 // function fetchCities(){
 //      fetch("city.list.json")
 //      .then((response)=>response.json())
@@ -16,6 +17,7 @@ const inputElement=document.querySelector(".input-city");
 async function getCities() {
 const cities=await fetch("current.city.list.json")
 const data=await cities.json();
+
 // const c=data.name;
 data.forEach(City => {
     cities_list.push(City.name);
@@ -31,11 +33,12 @@ return cities_list;
 async function save() {
     final_cities=await getCities();
     final_cities.sort();
-    final_cities.splice(0,1);
+    final_cities.splice(0,2);
     loadData(final_cities,citiesList);
-    console.log(final_cities);
+    return final_cities;
 }
-save();
+
+//save();
 
 function loadData(final_cities,element){
     if(final_cities){
@@ -43,12 +46,20 @@ function loadData(final_cities,element){
         let innerElement="";
         final_cities.forEach((item)=>
         {
-            innerElement+=`<li>${item}</li>`;
+            innerElement+=`<li class="LI">${item}</li>`;
         });
         element.innerHTML=innerElement;
     }
-}
+   Selected_city=document.querySelector(".LI");
+    Selected_city.addEventListener("click",()=>{
+        let input_e=inputElement.value;
+        input_e=Selected_city.innerText;
+    //save();
 
+}
+)
+return inputElement.value;
+}
 function filterData(data,searchText){
     return data.filter((x)=>
        x.toLowerCase().includes(searchText.toLowerCase())
@@ -59,3 +70,17 @@ inputElement.addEventListener("input", function(){
    const filteredData= filterData(final_cities,inputElement.value);
    loadData(filteredData,citiesList);
 });
+
+inputElement.addEventListener("click",save());
+
+// async function selected() {
+//     await loadData();
+//     Selected_city=document.querySelector(".LI");
+//     console.log(Selected_city)
+//     Selected_city.addEventListener("click",()=>{
+//         console.log(Selected_city.value)
+//         inputElement.value=Selected_city.innerText;
+//     }
+//     )
+// }
+// selected();
