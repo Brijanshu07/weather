@@ -31,7 +31,7 @@ body{
 input{
     width: 100px;
     border: none;
-    /* border-radius: 30px; */
+    border-radius: 20px;
     flex: 1;
     height: 50px;
     outline: none;
