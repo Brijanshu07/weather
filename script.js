@@ -22,6 +22,7 @@ const url="https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
         document.querySelector(".humidity").innerHTML=" ";
         document.querySelector(".wind").innerHTML=" ";
         WIcon.src=`images/error.png`
+        city.value="";
     }
     else{
         details.classList.remove("remove");
@@ -33,6 +34,8 @@ const url="https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
         WIcon.src=`images/${W_main}.png`
  }
 document.querySelector(".container").classList.add("remove");
+
+
 }
 
  btn.addEventListener("click",()=>{
@@ -43,7 +46,10 @@ city.addEventListener("keypress",(event)=>{
     if(event.key==="Enter"){
     var City=city.value;
     checkweather(City);
-
+    // city.addEventListener("keypress",()=>{
+    //     city.value="";
+    //     return;
+    // })
  }
 })
 
