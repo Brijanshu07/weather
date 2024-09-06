@@ -14,7 +14,7 @@ async function checkweather(City) {
     //card.style.animationDuration="2s";
     if(data.message==="city not found"){
         details.classList.add("remove");
-        document.querySelector(".city").innerHTML="Please Enter correct City";
+        document.querySelector(".city").innerHTML="Please Enter Correct City";
         document.querySelector(".temp").innerHTML=" ";
         document.querySelector(".humidity").innerHTML=" ";
         document.querySelector(".wind").innerHTML=" ";
@@ -31,7 +31,7 @@ async function checkweather(City) {
  }
 }
 
- 
+
  btn.addEventListener("click",run=()=>{
     var City=city.value;
     checkweather(City);
